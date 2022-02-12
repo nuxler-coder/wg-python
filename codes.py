@@ -1,3 +1,12 @@
+# Importing stuffs and set up
+import discord
+from discord.ext import commands
+from PIL import Image, ImageChops, ImageDraw, ImageFont
+import os
+
+intents = discord.Intents().all()
+client = commands.Bot(command_prefix=">", intents=intents)
+
 # This function makes a member's avatar circle. So this function is needed to be defined in order to create circle avatars.
 def circle(pfp, size=(215, 215)):
   pfp = pfp.resize(size, Image.ANTIALIAS).convert("RGBA")
@@ -70,3 +79,5 @@ async def on_member_remove(member):
     gbEmbed = discord.Embed(title=f"Someone left **{guild.name}**", description=f"{member.mention} has left this server!\nNow we have {guild.member_count} members!", color=discord.Color.blue())
     gbEmbed.set_image(url="attachment://gb.png")
     await channel.send(file = file, embed = gbEmbed)
+   
+  clien.run(os.getenv("TOKEN"))
