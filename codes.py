@@ -7,6 +7,10 @@ import os
 intents = discord.Intents().all()
 client = commands.Bot(command_prefix=">", intents=intents)
 
+@client.event
+async def on_ready():
+  print(f"{client.user} is online!")
+
 # This function makes a member's avatar circle. So this function is needed to be defined in order to create circle avatars.
 def circle(pfp, size=(215, 215)):
   pfp = pfp.resize(size, Image.ANTIALIAS).convert("RGBA")
